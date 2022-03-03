@@ -49,7 +49,7 @@ blue_part = paramak.RotateStraightShape(
 
 my_reactor = paramak.Reactor([grey_part, red_part, blue_part])
 
-my_reactor.show()
+
 # exports the reactor shapes as a DAGMC h5m file which can be used as
 # we will need to decrease the mesh size on this function to make the geometry better
 my_reactor.export_dagmc_h5m("dagmc.h5m", min_mesh_size=1, max_mesh_size=2)
