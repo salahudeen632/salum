@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<geometry>
+  <cell fill="1" id="9999" region="-9999" universe="2" />
+  <dagmc_universe filename="dagmc.h5m" id="1" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 5.25" id="9999" type="sphere" />
+</geometry>
