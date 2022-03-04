@@ -82,7 +82,7 @@ geometry.create_sphere_of_vacuum_surface
 my_source = openmc.Source()
 
 # sets the location of the source to x=0 y=0 z=0
-my_source.space = openmc.stats.Point((0, 0, 5))
+my_source.space = openmc.stats.Point((0, 0, 20))
 
 # sets the direction to isotropic
 my_source.angle = openmc.stats.Isotropic()
