@@ -187,24 +187,22 @@ integrator.integrate()
 from openmc_mesh_tally_to_vtk import write_mesh_tally_to_vtk
 import openmc
 
-# assumes you have a statepoint file from the OpenMC simulation
-statepoint = openmc.StatePoint(f'statepoint.{settings.batches}.h5')
-
-statepoint.tallies
-
-# assumes the statepoint file has a RegularMesh tally with a certain name
-my_tally = statepoint.get_tally(name='heating_on_3D_mesh')
-my_tally1=statepoint.get_tally(name='neutron_effective_dose_on_3D_mesh')
+for counter in [0,1,2,3,4,5]:
+    sp = openmc.StatePoint(f'openmc_simulation_n{counter}.h5')
+    my_tally = statepoint.get_tally(name='heating_on_3D_mesh')
+    my_tally1=statepoint.get_tally(name='neutron_effective_dose_on_3D_mesh')
 
 # converts the tally result into a VTK file
-write_mesh_tally_to_vtk(
+    write_mesh_tally_to_vtk(
     tally=my_tally,
     filename = "heating_openmc_mesh.vtk",
 )
 
 
-write_mesh_tally_to_vtk(
+    write_mesh_tally_to_vtk(
     tally=my_tally1,
     filename = "neutron_openmc_mesh.vtk",
 )
+
+
 
