@@ -153,12 +153,12 @@ tally2 = odw.MeshTally3D(
 tallies = openmc.Tallies([tally1,tally2])
 
 settings = odw.FusionSettings()
-settings.batches = 50
+settings.batches = 500
 settings.particles = 100_000
 settings.source = my_source
 
 # run python generate_endf71_chain.py from the openmc-dev/data repo
-chain_filename = 'chain_endfb71_sfr.xml'
+chain_filename = 'chain_endfb71_pwr.xml'
 chain = openmc.deplete.Chain.from_xml(chain_filename)
 
 geometry.export_to_xml()
@@ -170,15 +170,13 @@ my_model = openmc.model.Model(geometry, materials, settings, tallies)
 operator = openmc.deplete.Operator(my_model, chain_filename)
 
 
-time_steps = [365*24*60*60] * 5 # 5 steps of 5 years in seconds
-source_rates = [1e9]*5# 1GW
+time_steps = [365*24*60*60] * 2 # 5 steps of 5 years in seconds
+source_rates = [1e9]*2# 1GW
 
 
 integrator = openmc.deplete.PredictorIntegrator(operator, time_steps, source_rates)
 
 integrator.integrate()
-from openmc_mesh_tally_to_vtk import write_mesh_tally_to_vtk
-import openmc
 
 # assumes you have a statepoint file from the OpenMC simulation
 statepoint = openmc.StatePoint(f'statepoint.{settings.batches}.h5')
@@ -188,14 +186,4 @@ statepoint.tallies
 my_tally = statepoint.get_tally(name='heating_on_3D_mesh')
 my_tally1=statepoint.get_tally(name='neutron_effective_dose_on_3D_mesh')
 
-# converts the tally result into a VTK file
-write_mesh_tally_to_vtk(
-    tally=my_tally,
-    filename = "heating_openmc_mesh.vtk",
-)
 
-
-write_mesh_tally_to_vtk(
-    tally=my_tally1,
-    filename = "neutron_openmc_mesh.vtk",
-)
