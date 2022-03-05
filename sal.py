@@ -189,8 +189,8 @@ import openmc
 
 for counter in [0,1,2,3,4,5]:
     sp = openmc.StatePoint(f'openmc_simulation_n{counter}.h5')
-    my_tally = statepoint.get_tally(name='heating_on_3D_mesh')
-    my_tally1=statepoint.get_tally(name='neutron_effective_dose_on_3D_mesh')
+    my_tally = sp.get_tally(name='heating_on_3D_mesh')
+    my_tally1=sp.get_tally(name='neutron_effective_dose_on_3D_mesh')
 
 # converts the tally result into a VTK file
     write_mesh_tally_to_vtk(
