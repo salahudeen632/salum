@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <materials>
-  <material id="1" name="mat_grey_part">
+  <material depletable="true" id="1" name="mat_grey_part" volume="5">
     <density units="g/cc" value="19.3" />
     <nuclide ao="0.0012" name="W180" />
     <nuclide ao="0.265" name="W182" />
@@ -8,15 +8,14 @@
     <nuclide ao="0.3064" name="W184" />
     <nuclide ao="0.2843" name="W186" />
   </material>
-  <material id="2" name="mat_blue_part">
-    <density units="g/cc" value="6.6" />
-    <nuclide ao="0.5145" name="Zr90" />
-    <nuclide ao="0.1122" name="Zr91" />
-    <nuclide ao="0.1715" name="Zr92" />
-    <nuclide ao="0.1738" name="Zr94" />
-    <nuclide ao="0.028" name="Zr96" />
+  <material id="3" name="mat_blue_part">
+    <density units="g/cc" value="7.19" />
+    <nuclide ao="0.04345" name="Cr50" />
+    <nuclide ao="0.83789" name="Cr52" />
+    <nuclide ao="0.09501" name="Cr53" />
+    <nuclide ao="0.02365" name="Cr54" />
   </material>
-  <material id="5" name="mat_red_part">
+  <material depletable="true" id="5" name="mat_red_part" volume="2">
     <density units="g/cc" value="8.96" />
     <nuclide ao="0.6915" name="Cu63" />
     <nuclide ao="0.3085" name="Cu65" />
