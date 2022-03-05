@@ -170,7 +170,7 @@ my_model = openmc.model.Model(geometry, materials, settings, tallies)
 operator = openmc.deplete.Operator(my_model, chain_filename)
 
 
-time_steps = [10] * 5 # 5 steps of 5 years in seconds
+time_steps = [365*24*60*60] * 5 # 5 steps of 5 years in seconds
 source_rates = [1e9]*5# 1GW
 
 
