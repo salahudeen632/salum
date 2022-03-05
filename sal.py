@@ -154,7 +154,7 @@ tallies = openmc.Tallies([tally1,tally2])
 
 settings = odw.FusionSettings()
 settings.batches = 50
-settings.particles = 1000
+settings.particles = 100_000
 settings.source = my_source
 
 # run python generate_endf71_chain.py from the openmc-dev/data repo
@@ -170,7 +170,7 @@ my_model = openmc.model.Model(geometry, materials, settings, tallies)
 operator = openmc.deplete.Operator(my_model, chain_filename)
 
 
-time_steps = [10] * 5 # 5 steps of 5 years in seconds
+time_steps = [365*24*60*60] * 5 # 5 steps of 5 years in seconds
 source_rates = [1e9]*5# 1GW
 
 
