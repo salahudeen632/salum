@@ -119,9 +119,7 @@ my_source2.angle = openmc.stats.Isotropic()
 # sets the energy distribution to 100% 14MeV neutrons
 my_source2.energy = openmc.stats.Discrete([14e6], [1])
 
-import neutronics_material_maker as nmm
-my_mat1 = nmm.Material.from_library(name='H2O', temperature=300, pressure=3.3e6)
-my_mat1.openmc_material
+
 
 # this links the material tags in the dagmc h5m file with materials.
 # these materials are input as strings so they will be looked up in the
