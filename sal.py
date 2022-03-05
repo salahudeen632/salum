@@ -177,32 +177,25 @@ source_rates = [1e9]*5# 1GW
 integrator = openmc.deplete.PredictorIntegrator(operator, time_steps, source_rates)
 
 integrator.integrate()
-
-
-
-
-
-# create vtk of 3d heating tally
-
 from openmc_mesh_tally_to_vtk import write_mesh_tally_to_vtk
 import openmc
 
-for counter in [0,1,2,3,4,5]:
-    sp = openmc.StatePoint(f'openmc_simulation_n{counter}.h5')
-    my_tally = sp.get_tally(name='heating_on_3D_mesh')
-    my_tally1=sp.get_tally(name='neutron_effective_dose_on_3D_mesh')
+# assumes you have a statepoint file from the OpenMC simulation
+statepoint = openmc.StatePoint(f'statepoint.{settings.batches}.h5')
+
+statepoint.tallies
+
+my_tally = statepoint.get_tally(name='heating_on_3D_mesh')
+my_tally1=statepoint.get_tally(name='neutron_effective_dose_on_3D_mesh')
 
 # converts the tally result into a VTK file
-    write_mesh_tally_to_vtk(
+write_mesh_tally_to_vtk(
     tally=my_tally,
     filename = "heating_openmc_mesh.vtk",
 )
 
 
-    write_mesh_tally_to_vtk(
+write_mesh_tally_to_vtk(
     tally=my_tally1,
     filename = "neutron_openmc_mesh.vtk",
 )
-
-
-
