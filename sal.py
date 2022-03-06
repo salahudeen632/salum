@@ -170,8 +170,8 @@ my_model = openmc.model.Model(geometry, materials, settings, tallies)
 operator = openmc.deplete.Operator(my_model, chain_filename)
 
 
-time_steps = [365*24*60*60]*2  # 5 steps of 5 years in seconds
-source_rates = [1e9]*2# 1GW
+time_steps = [140000]*5  # 5 steps of 5 years in seconds
+source_rates = [1e9]*5# 1GW
 
 
 integrator = openmc.deplete.PredictorIntegrator(operator, time_steps, source_rates)
